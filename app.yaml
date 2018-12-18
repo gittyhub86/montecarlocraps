@@ -1,0 +1,31 @@
+runtime: python27
+api_version: 1
+threadsafe: yes
+
+handlers:
+- url: /css
+  static_dir: craps/css
+  
+- url: /modules
+  static_dir: craps/modules
+ 
+- url: /modules/directives
+  static_dir: craps/modules/directives
+  
+- url: /lib/angular
+  static_dir: craps/lib/angular
+  
+- url: /lib/jquery
+  static_dir: craps/lib/jquery
+  
+- url: /templates
+  static_dir: craps/templates
+
+- url: .*
+  script: main.app
+
+libraries:
+- name: jinja2
+  version: "2.6"
+- name: markupsafe
+  version: "0.15"

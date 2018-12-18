@@ -1,0 +1,113 @@
+<h2>Monte Carlo Simulation of Craps</h2>
+<h4>
+	Simulate a random game of dice. See the results of placing different
+	bets for <span class="italic">n</span> number of trials and rounds.
+	For example, play the pass line, and the 6 and 8 place bets. See the
+	outcome over 200,000 games by setting the Rounds per trial to 1,000
+	and the Number of trials to 200.
+</h4>
+<table>
+	<tr>
+		<td>
+		    <label>Rounds per trial: </label>
+		</td>
+		<td>
+			<input type="number" min="1" data-ng-model="ctrl.roundsPerTrial" />
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<label>Number of trials: </label>
+		</td>
+		<td>
+			<input type="number" min="1" data-ng-model="ctrl.numTrials" />
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<label>Pass bet (Uncheck for<br />
+		           don't pass bet)</label>
+		</td>
+		<td>
+			<input type="checkbox" data-ng-checked="ctrl.passLine"
+		           data-ng-model="ctrl.passLine" />
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<label>Pass/Don't pass bet $amount: </label>
+		</td>
+		<td>
+			<input type="number" min="1" data-ng-model="ctrl.betAmt" />
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<label>Place bet 4 $amount: </label>
+		</td>
+		<td>
+			<input type="number" min="0" data-ng-model="ctrl.betFour" />
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<label>Place bet 5 $amount: </label>
+		</td>
+		<td>
+			<input type="number" min="0" data-ng-model="ctrl.betFive" />
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<label>Place bet 6 $amount: </label>
+		</td>
+		<td>
+			<input type="number" min="0" data-ng-model="ctrl.betSix" />
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<label>Place bet 8 $amount: </label>
+		</td>
+		<td>
+			<input type="number" min="0" data-ng-model="ctrl.betEight" />
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<label>Place bet 9 $amount: </label>
+		</td>
+		<td>
+			<input type="number" min="0" data-ng-model="ctrl.betNine" />
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<label>Place bet 10 $amount: </label>
+		</td>
+		<td>
+			<input type="number" min="0" data-ng-model="ctrl.betTen" />
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<button data-ng-disabled="ctrl.disableButton" data-run-sim class="btn">
+		    Start
+		    </button>
+		</td>
+	</tr>
+</table>
+
+<div class="progress-ring" data-ng-if="ctrl.isLoading==true"></div>
+<div class="progress-ring-text" data-ng-show="ctrl.isLoading==true">Loading...</div>
+<div class="error" data-ng-show="ctrl.errArr.length > 0" data-ng-repeat="msg in ctrl.errArr">
+	<p>{{msg}}</p>
+</div>
+<h3 data-ng-show="ctrl.resLog">Totals:</h3>
+<div data-ng-if="ctrl.resLog" data-ng-bind-html="ctrl.resLog | trusted"></div>
+<p data-ng-show="ctrl.resLog">Total money won/loss each trial:</p>
+<div data-append-result></div>
+
+<div class="footer">
+	<p class="copyright">Calvin Wei &copy; 2017</p>
+</div>
